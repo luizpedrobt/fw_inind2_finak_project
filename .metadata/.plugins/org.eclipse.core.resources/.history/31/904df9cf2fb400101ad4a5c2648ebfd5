@@ -1,0 +1,15 @@
+/*
+ * app_sm.h
+ *
+ *  Created on: Oct 28, 2025
+ *      Author: pedro-bittencourt
+ */
+
+#ifndef INC_APP_SM_H_
+#define INC_APP_SM_H_
+
+void app_sm_init(void);
+
+
+
+#endif /* INC_APP_SM_H_ */

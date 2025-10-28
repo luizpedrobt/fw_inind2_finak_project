@@ -1,0 +1,58 @@
+/*
+ * control.c
+ *
+ *  Created on: Oct 14, 2025
+ *      Author: pedro-bittencourt
+ */
+#include <stdint.h>
+#include "control.h"
+
+control_pid_t pid_cc_motor;
+
+void control_init_controller(control_pid_t *pid_handler, float kp, float ki, float kd, float setpoint)
+{
+	pid_handler->kp = kp;
+	pid_handler->ki = ki * SAMPLING_PERIOD_S;
+	pid_handler->kd = kd / SAMPLING_PERIOD_S;
+
+	pid_handler->u = 0;
+	pid_handler->error = 0.0;
+	pid_handler->error_1 = 0.0;
+
+	pid_handler->output.P = 0.0;
+	pid_handler->output.I = 0.0;
+	pid_handler->output.D = 0.0;
+
+	pid_handler->setpoint = setpoint;
+}
+
+void control_change_sp(control_pid_t *pid_handler, float sp)
+{
+	pid_handler->setpoint = sp;
+}
+
+void control_get_u(control_pid_t *pid_handler)
+{
+	pid_handler->error = pid_handler->setpoint - pid_handler->current;
+
+	pid_handler->output.I += pid_handler->ki * (pid_handler->error);
+
+	if(pid_handler->output.I >= MAX_OUTPUT)
+		pid_handler->output.I = MAX_OUTPUT;
+
+	else if(pid_handler->output.I <= MIN_OUTPUT)
+		pid_handler->output.I = MIN_OUTPUT;
+
+	float diff_err = pid_handler->error - pid_handler->error_1;
+
+	float output = (pid_handler->output.P * pid_handler->error + pid_handler->output.I + pid_handler->output.D * diff_err);
+
+	if(output <= MIN_OUTPUT)
+		output = MIN_OUTPUT;
+	else if(output >= MAX_OUTPUT)
+		output = MAX_OUTPUT;
+
+	pid_handler->u = (uint16_t)output;
+
+	pid_handler->error_1 = pid_handler->error;
+}

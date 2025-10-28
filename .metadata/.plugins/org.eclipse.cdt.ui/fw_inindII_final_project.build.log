@@ -1,0 +1,19 @@
+15:48:32 **** Incremental Build of configuration Debug for project fw_inindII_final_project ****
+make -j12 all 
+arm-none-eabi-gcc "../app/Src/app_sm.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32U585xx -c -I../Core/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app" -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app/Inc" -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"app/Src/app_sm.d" -MT"app/Src/app_sm.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "app/Src/app_sm.o"
+arm-none-eabi-gcc "../app/Src/control.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32U585xx -c -I../Core/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app" -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app/Inc" -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"app/Src/control.d" -MT"app/Src/control.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "app/Src/control.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m33 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32U585xx -c -I../Core/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc -I../Drivers/STM32U5xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32U5xx/Include -I../Drivers/CMSIS/Include -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app" -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app/Inc" -I"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/app/Src" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "fw_inindII_final_project.elf" @"objects.list"   -mcpu=cortex-m33 -T"/home/pedro-bittencourt/ININD2_F411_FINAL/fw_inindII_final_project/STM32U585CIUX_FLASH.ld" --specs=nosys.specs -Wl,-Map="fw_inindII_final_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: fw_inindII_final_project.elf
+ 
+arm-none-eabi-size  fw_inindII_final_project.elf 
+arm-none-eabi-objdump -h -S fw_inindII_final_project.elf  > "fw_inindII_final_project.list"
+   text	   data	    bss	    dec	    hex	filename
+   8296	      9	   1572	   9877	   2695	fw_inindII_final_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: fw_inindII_final_project.list
+ 
+
+15:48:32 Build Finished. 0 errors, 0 warnings. (took 439ms)
+
