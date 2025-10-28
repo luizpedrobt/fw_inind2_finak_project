@@ -1,3 +1,0 @@
-../app/Src/control.c:12:6:control_init_controller	32	static
-../app/Src/control.c:29:6:control_change_sp	16	static
-../app/Src/control.c:34:6:control_get_u	24	static
